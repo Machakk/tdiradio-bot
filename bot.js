@@ -111,7 +111,7 @@ client.on('messageCreate', async message => {
         message.reply('Playing radio station!');
 
         // Check if the bot is alone in the channel after a delay
-/*        setTimeout(() => {
+        setTimeout(() => {
             if (connection && connection.joinConfig && connection.joinConfig.channel) {
                 const membersInChannel = connection.joinConfig.channel.members.size;
                 if (membersInChannel === 1) {
@@ -123,7 +123,7 @@ client.on('messageCreate', async message => {
                 console.log('Connection or channel information is missing.');
             }
         }, 60000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
-*/
+
     } else if (message.content === '!stop') {
         const connection = getVoiceConnection(message.guild.id);
         if (connection) {
@@ -135,7 +135,7 @@ client.on('messageCreate', async message => {
     }
 });
 
-client.on('voiceStateUpdate', (oldState, newState) => {
+/*client.on('voiceStateUpdate', (oldState, newState) => {
     // Check if the bot is alone in the channel
     const botVoiceChannel = newState.guild.me.voice.channel;
     if (botVoiceChannel && botVoiceChannel.members.size === 1) {
@@ -143,6 +143,6 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         botVoiceChannel.leave();
         console.log('Bot left the channel because it was alone.');
     }
-});
+});*/
 
 client.login(config.token);
