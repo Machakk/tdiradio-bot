@@ -122,7 +122,7 @@ client.on('messageCreate', async message => {
             } else {
                 console.log('Connection or channel information is missing.');
             }
-        }, 5000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
+        }, 60000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
 
     } else if (message.content === '!stop') {
         const connection = getVoiceConnection(message.guild.id);
