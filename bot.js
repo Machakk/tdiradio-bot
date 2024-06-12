@@ -112,7 +112,7 @@ client.on('messageCreate', async message => {
 
         // Check if the bot is alone in the channel after a delay
         setTimeout(() => {
-            if (connection.joinConfig && connection.joinConfig.channel) {
+            if (connection && connection.joinConfig && connection.joinConfig.channel) {
                 const membersInChannel = connection.joinConfig.channel.members.size;
                 if (membersInChannel === 1) {
                     // If the bot is alone, destroy the connection
@@ -122,7 +122,7 @@ client.on('messageCreate', async message => {
             } else {
                 console.log('Connection or channel information is missing.');
             }
-        }, 10000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
+        }, 5000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
 
     } else if (message.content === '!stop') {
         const connection = getVoiceConnection(message.guild.id);
