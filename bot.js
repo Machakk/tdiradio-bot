@@ -109,6 +109,16 @@ client.on('messageCreate', async message => {
         });
 
         message.reply('Playing radio station!');
+
+         // Check if the bot is alone in the channel after a delay
+         setTimeout(() => {
+            const membersInChannel = connection.joinConfig.channel.members.size;
+            if (membersInChannel === 1) {
+                // If the bot is alone, destroy the connection
+                connection.destroy();
+                console.log('Bot left the channel because it was alone.');
+            }
+        }, 10000); // Adjust the delay as needed (e.g., 60000 milliseconds = 1 minute)
     } else if (message.content === '!stop') {
         const connection = getVoiceConnection(message.guild.id);
         if (connection) {
